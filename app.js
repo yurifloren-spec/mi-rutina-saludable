@@ -10,7 +10,7 @@ const baseDays=[
 const key='rutina-javi-v1'; let custom=JSON.parse(localStorage.getItem(key+'-custom')||'null')||{}; let checks=JSON.parse(localStorage.getItem(key+'-checks')||'{}');
 const jsDay=(new Date().getDay()+6)%7; let selected=jsDay;
 const $=s=>document.querySelector(s); const nav=$('#dayNav');
-function dayData(i){const d=structuredClone(baseDays[i]); if(custom[i]) d.groups=custom[i]; return d}
+function dayData(i){const d=structuredClone(baseDays[i]); if(custom[i]) d.groups=custom[i]; if(!d.groups['MEDICACIÓN']) d.groups={'MEDICACIÓN':['09:00 · Tomar medicación'],...d.groups}; return d}
 function dateFor(i){const d=new Date();d.setDate(d.getDate()+i-jsDay);return d}
 function idFor(i,g,t){return `${dateFor(i).toISOString().slice(0,10)}|${g}|${t}`}
 function render(){const d=dayData(selected),date=dateFor(selected);$('#dayTitle').textContent=d.name;$('#dateLabel').textContent=date.toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});$('#focusTitle').textContent=d.focus;$('#focusText').textContent=d.desc;
