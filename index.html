@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#142c25">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Mi rutina">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <title>Mi rutina saludable</title>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__top"><span class="brand">MI RUTINA</span><button id="todayBtn" class="ghost">Hoy</button></div>
+    <p id="dateLabel" class="date"></p>
+    <h1 id="dayTitle"></h1>
+    <div class="progress-row"><div class="progress"><span id="progressBar"></span></div><strong id="progressText">0/0</strong></div>
+  </header>
+
+  <nav id="dayNav" class="days" aria-label="Días de la semana"></nav>
+
+  <main>
+    <section class="focus-card">
+      <span>OBJETIVO DEL DÍA</span>
+      <h2 id="focusTitle"></h2>
+      <p id="focusText"></p>
+    </section>
+    <div id="taskGroups"></div>
+    <button id="editBtn" class="edit">Editar tareas de este día</button>
+  </main>
+
+  <dialog id="editDialog">
+    <form method="dialog">
+      <div class="dialog-head"><h2>Editar el día</h2><button value="cancel" aria-label="Cerrar">×</button></div>
+      <p>Una tarea por línea. Los cambios se guardan solo en este dispositivo.</p>
+      <div id="editFields"></div>
+      <div class="dialog-actions"><button value="cancel" class="secondary">Cancelar</button><button id="saveBtn" value="default" class="primary">Guardar</button></div>
+    </form>
+  </dialog>
+  <script src="app.js"></script>
+</body>
+</html>
