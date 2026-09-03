@@ -7,6 +7,36 @@ const baseDays=[
  {name:'Sábado',focus:'Movimiento sin presión',desc:'Actividad suave para recuperarte y mantener el hábito.',groups:{'ACTIVIDAD':['Paseo largo, bici o juego activo · 30–40 min','Movilidad o estiramientos · 10 min'],'HÁBITOS':['Beber agua con regularidad','Comer fruta y verdura','Disfrutar sin buscar perfección','Revisar qué falta para la compra']}},
  {name:'Domingo',focus:'Preparar la semana',desc:'Un poco de movimiento y organización para ponértelo fácil.',groups:{'ACTIVIDAD SUAVE':['Paseo tranquilo · 30 min','Movilidad · 10 min'],'BATCH COOKING':['Planificar menú semanal','Hacer la compra','Cocer arroz o cereal base','Preparar legumbres, verduras y proteína','Guardar raciones para lunes–miércoles'],'CIERRE DEL DÍA':['Preparar ropa y bolsa del lunes','Revisar la semana en la app','Acostarte sobre las 22:00']}}
 ];
+const mealPlans=[
+ {total:'≈1.450 kcal · 72 g proteína',meals:[
+  ['07:00 · DESAYUNO','Tostadas con hummus y tomate','Pan integral 70 g · hummus 60 g · tomate 100 g · 1 plátano','Tuesta el pan, unta el hummus y cubre con tomate.','430 kcal','15 g proteína','11 g fibra'],
+  ['14:00 · COMIDA','Lentejas mediterráneas con arroz','Lentejas cocidas 250 g · arroz cocido 100 g · verduras 250 g','Rehoga cebolla, zanahoria y pimiento; añade tomate y lentejas. Sirve con el arroz.','610 kcal','28 g proteína','23 g fibra'],
+  ['21:00 · CENA','Ensalada completa con seitán','Seitán 100 g · ensalada 300 g · pan integral 40 g · AOVE 10 g','Dora el seitán 4–5 minutos, córtalo y añádelo a la ensalada.','410 kcal','29 g proteína','12 g fibra']]},
+ {total:'≈1.480 kcal · 76 g proteína',meals:[
+  ['07:00 · DESAYUNO','Tostadas con pavo y tomate','Pan integral 70 g · pavo 60 g · tomate 100 g · 2 mandarinas','Tuesta el pan, añade tomate y coloca el pavo encima.','390 kcal','22 g proteína','9 g fibra'],
+  ['14:00 · COMIDA','Pollo a la plancha con arroz y verduras','Pechuga 120 g · arroz cocido 160 g · verduras 250 g · AOVE 10 g','Cocina el pollo 3–4 minutos por lado y saltea las verduras. Sirve con el arroz.','620 kcal','38 g proteína','10 g fibra'],
+  ['21:00 · CENA','Ensalada de garbanzos','Garbanzos cocidos 150 g · hortalizas 300 g · AOVE 10 g','Aclara los garbanzos y mezcla con tomate, pepino, cebolla y hojas verdes.','470 kcal','16 g proteína','15 g fibra']]},
+ {total:'≈1.420 kcal · 70 g proteína',meals:[
+  ['07:00 · DESAYUNO','Tostadas con caballa y tomate','Pan integral 70 g · caballa 50 g · tomate 100 g · uvas 150 g','Escurre la caballa, desmenúzala y sírvela sobre el pan con tomate.','430 kcal','22 g proteína','8 g fibra'],
+  ['14:00 · COMIDA','Pasta integral con ragú de seitán','Pasta cocida 200 g · seitán 100 g · verduras y tomate 250 g','Sofríe las verduras, añade seitán picado y tomate 10 minutos y mezcla con la pasta.','610 kcal','35 g proteína','15 g fibra'],
+  ['21:00 · CENA','Crema de verduras y hummus','Crema de calabacín y puerro 350 g · hummus 70 g · pan integral 40 g','Cuece la verdura 15 minutos y tritura. Acompaña con hummus y pan.','380 kcal','13 g proteína','11 g fibra']]},
+ {total:'≈1.500 kcal · 71 g proteína',meals:[
+  ['07:00 · DESAYUNO','Tostadas con hummus y fruta','Pan integral 70 g · hummus 60 g · tomate 100 g · frutos rojos 150 g','Tuesta el pan, unta el hummus y añade tomate. Toma la fruta aparte.','400 kcal','14 g proteína','13 g fibra'],
+  ['14:00 · COMIDA','Alubias blancas guisadas','Alubias cocidas 250 g · arroz cocido 100 g · verduras 250 g','Rehoga verduras con pimentón, añade tomate y alubias; cuece 12 minutos.','640 kcal','27 g proteína','24 g fibra'],
+  ['21:00 · CENA','Salmón al horno con ensalada','Salmón 120 g · ensalada 300 g · patata cocida 150 g','Hornea el salmón 12–15 minutos a 190 °C. Sirve con patata y ensalada.','460 kcal','30 g proteína','9 g fibra']]},
+ {total:'≈1.510 kcal · 78 g proteína',meals:[
+  ['07:00 · DESAYUNO','Tostadas con pavo y tomate','Pan integral 70 g · pavo 60 g · tomate 100 g · 1 melocotón','Tuesta el pan, añade tomate y pavo. Toma la fruta aparte.','390 kcal','22 g proteína','9 g fibra'],
+  ['14:00 · COMIDA','Bowl de garbanzos y arroz','Garbanzos cocidos 200 g · arroz cocido 120 g · verduras 250 g','Saltea las verduras, añade los garbanzos y especias suaves; sirve sobre el arroz.','620 kcal','22 g proteína','18 g fibra'],
+  ['21:00 · CENA','Pollo a la plancha con ensalada','Pechuga 110 g · ensalada 300 g · pan integral 50 g · AOVE 10 g','Cocina el pollo 3–4 minutos por lado y córtalo sobre la ensalada.','500 kcal','34 g proteína','10 g fibra']]},
+ {total:'Día flexible',meals:[
+  ['08:00 · DESAYUNO','Desayuno salado a elegir','Tostadas integrales · hummus, pavo o caballa · fruta','Elige una opción de la semana y mantén una ración parecida.','','',''],
+  ['14:00 · COMIDA','Comida libre consciente','½ plato verdura · ¼ proteína · ¼ arroz, patata o pan','Come despacio y termina cuando estés satisfecho, sin compensar después.','','',''],
+  ['21:00 · CENA','Cena ligera','Ensalada o crema · legumbre, hummus o seitán','Aprovecha alguna preparación sobrante y añade una buena ración de verdura.','','','']]},
+ {total:'Día de preparación',meals:[
+  ['08:00 · DESAYUNO','Tostadas con hummus','Pan integral 70 g · hummus 60 g · tomate · fruta','Tuesta el pan, unta el hummus y añade tomate.','','',''],
+  ['14:00 · COMIDA','Arroz meloso de verduras','Arroz cocido 180 g · verduras 300 g · legumbre 150 g','Sofríe las verduras, incorpora arroz y legumbre y añade caldo hasta quedar meloso.','','',''],
+  ['21:00 · CENA','Crema y ensalada sencilla','Crema de verduras 300 g · ensalada 200 g · pan integral 40 g','Usa parte de las verduras del batch cooking para dejar la cena lista.','','','']]}
+];
 const key='rutina-javi-v1'; let custom=JSON.parse(localStorage.getItem(key+'-custom')||'null')||{}; let checks=JSON.parse(localStorage.getItem(key+'-checks')||'{}');
 const jsDay=(new Date().getDay()+6)%7; let selected=jsDay;
 const $=s=>document.querySelector(s); const nav=$('#dayNav');
@@ -15,8 +45,9 @@ function dateFor(i){const d=new Date();d.setDate(d.getDate()+i-jsDay);return d}
 function idFor(i,g,t){return `${dateFor(i).toISOString().slice(0,10)}|${g}|${t}`}
 function render(){const d=dayData(selected),date=dateFor(selected);$('#dayTitle').textContent=d.name;$('#dateLabel').textContent=date.toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});$('#focusTitle').textContent=d.focus;$('#focusText').textContent=d.desc;
  nav.innerHTML=baseDays.map((x,i)=>`<button data-day="${i}" class="${i===selected?'active':''}">${x.name.slice(0,3)}<small>${dateFor(i).getDate()}</small></button>`).join('');
+ const plan=mealPlans[selected];$('#macroTotal').textContent=plan.total;const menu=$('#menuRoot');menu.innerHTML='';plan.meals.forEach(m=>{const id=idFor(selected,'MENÚ',m[1]),on=!!checks[id],card=document.createElement('article');card.className='meal';card.innerHTML=`<div class="meal-head"><input class="meal-check" type="checkbox" ${on?'checked':''} aria-label="Marcar comida"><div><span class="meal-time"></span><h3></h3><p class="meal-amounts"></p></div></div><details><summary>Cómo prepararlo y nutrientes</summary><p class="recipe"></p><div class="macros"></div></details>`;card.querySelector('.meal-time').textContent=m[0];card.querySelector('h3').textContent=m[1];card.querySelector('.meal-amounts').textContent=m[2];card.querySelector('.recipe').textContent=m[3];card.querySelector('.macros').innerHTML=m.slice(4).filter(Boolean).map(x=>`<span>${x}</span>`).join('');card.querySelector('input').onchange=e=>{checks[id]=e.target.checked;localStorage.setItem(key+'-checks',JSON.stringify(checks));renderProgress()};menu.append(card)});
  let total=0,done=0; const root=$('#taskGroups');root.innerHTML=''; Object.entries(d.groups).forEach(([g,tasks])=>{const sec=document.createElement('section');sec.className='group';sec.innerHTML=`<h3>${g}</h3>`;tasks.forEach(t=>{total++;const id=idFor(selected,g,t),on=!!checks[id];if(on)done++;const label=document.createElement('label');label.className='task';label.innerHTML=`<input type="checkbox" ${on?'checked':''}><i class="check"></i><span></span>`;label.querySelector('span').textContent=t;label.querySelector('input').onchange=e=>{checks[id]=e.target.checked;localStorage.setItem(key+'-checks',JSON.stringify(checks));renderProgress()};sec.append(label)});root.append(sec)});renderProgress();
- function renderProgress(){const inputs=[...document.querySelectorAll('.task input')];const n=inputs.filter(x=>x.checked).length;$('#progressText').textContent=`${n}/${inputs.length}`;$('#progressBar').style.width=`${inputs.length?n/inputs.length*100:0}%`}
+ function renderProgress(){const inputs=[...document.querySelectorAll('.task input,.meal-check')];const n=inputs.filter(x=>x.checked).length;$('#progressText').textContent=`${n}/${inputs.length}`;$('#progressBar').style.width=`${inputs.length?n/inputs.length*100:0}%`}
 }
 nav.onclick=e=>{const b=e.target.closest('button[data-day]');if(b){selected=+b.dataset.day;render()}};$('#todayBtn').onclick=()=>{selected=jsDay;render()};
 $('#editBtn').onclick=()=>{const d=dayData(selected),box=$('#editFields');box.innerHTML='';Object.entries(d.groups).forEach(([g,t])=>{const div=document.createElement('div');div.className='field';div.innerHTML=`<label></label><textarea></textarea>`;div.querySelector('label').textContent=g;div.querySelector('textarea').value=t.join('\n');div.querySelector('textarea').dataset.group=g;box.append(div)});$('#editDialog').showModal()};
