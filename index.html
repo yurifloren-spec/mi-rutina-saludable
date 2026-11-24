@@ -21,8 +21,8 @@
   </header>
 
   <nav class="view-tabs" aria-label="Secciones de la aplicación">
-    <button class="view-tab view-tab--active" type="button" data-view="day" aria-selected="true">HOY</button>
-    <button class="view-tab" type="button" data-view="prayer" aria-selected="false">REZO</button>
+    <button class="view-tab view-tab--active" type="button" data-view="day" aria-pressed="true">HOY</button>
+    <button class="view-tab" type="button" data-view="prayer" aria-pressed="false">REZO</button>
   </nav>
 
   <section id="dayView" class="view-panel view-panel--active">
@@ -77,6 +77,18 @@
       <div class="dialog-actions"><button value="cancel" class="secondary">Cancelar</button><button id="saveBtn" value="default" class="primary">Guardar</button></div>
     </form>
   </dialog>
-  <script src="app.js"></script>
+  <script>
+  (() => {
+    const $ = selector => document.querySelector(selector);
+const mantraAudio=$('#mantraAudio'),mantraToggle=$('#mantraToggle');
+function setMantraState(playing){mantraToggle.classList.toggle('mantra-toggle--playing',playing);mantraToggle.setAttribute('aria-pressed',String(playing));mantraToggle.textContent=playing?'■ Detener mantra':'▶ Reproducir mantra'}
+function switchView(view){const prayer=view==='prayer';$('#dayView').hidden=prayer;$('#prayerView').hidden=!prayer;document.querySelectorAll('.view-tab').forEach(b=>{const active=b.dataset.view===view;b.classList.toggle('view-tab--active',active);b.setAttribute('aria-pressed',String(active))});if(!prayer&&!mantraAudio.paused){mantraAudio.pause();mantraAudio.currentTime=0;setMantraState(false)}window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('.view-tab').forEach(b=>b.onclick=()=>switchView(b.dataset.view));
+mantraToggle.onclick=async()=>{if(mantraAudio.paused){try{await mantraAudio.play();setMantraState(true)}catch(e){mantraToggle.textContent='Toca de nuevo para reproducir'}}else{mantraAudio.pause();mantraAudio.currentTime=0;setMantraState(false)}};
+mantraAudio.onended=()=>setMantraState(false);
+
+  })();
+  </script>
+  <script src="app.js?v=10"></script>
 </body>
 </html>
