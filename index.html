@@ -46,11 +46,11 @@
   <section id="prayerView" class="view-panel prayer-screen" hidden>
     <main class="prayer-main">
       <section class="mantra-card" aria-labelledby="mantraTitle">
-        <span class="mantra-label">MANTRA EN BUCLE</span>
-        <h2 id="mantraTitle">Om Mani Padme Hum</h2>
-        <p>Una recitación calmada que se repetirá mientras permanezcas en esta pestaña.</p>
-        <button id="mantraToggle" class="mantra-toggle" type="button" aria-pressed="false">▶ Reproducir mantra</button>
-        <audio id="mantraAudio" src="mantra-om-mani-padme-hum.mp3" loop preload="auto"></audio>
+        <span class="mantra-label">AUDIO EN BUCLE</span>
+        <h2 id="mantraTitle">Rezo</h2>
+        <p>La canción se repetirá mientras permanezcas en esta pestaña.</p>
+        <button id="mantraToggle" class="mantra-toggle" type="button" aria-pressed="false">▶ Reproducir audio</button>
+        <audio id="mantraAudio" src="rezo-cancion.mp3" loop preload="none"></audio>
       </section>
       <section class="prayer" aria-labelledby="prayerTitle">
       <h2 id="prayerTitle">REZO</h2>
@@ -81,7 +81,7 @@
   (() => {
     const $ = selector => document.querySelector(selector);
 const mantraAudio=$('#mantraAudio'),mantraToggle=$('#mantraToggle');
-function setMantraState(playing){mantraToggle.classList.toggle('mantra-toggle--playing',playing);mantraToggle.setAttribute('aria-pressed',String(playing));mantraToggle.textContent=playing?'■ Detener mantra':'▶ Reproducir mantra'}
+function setMantraState(playing){mantraToggle.classList.toggle('mantra-toggle--playing',playing);mantraToggle.setAttribute('aria-pressed',String(playing));mantraToggle.textContent=playing?'■ Detener audio':'▶ Reproducir audio'}
 function switchView(view){const prayer=view==='prayer';$('#dayView').hidden=prayer;$('#prayerView').hidden=!prayer;document.querySelectorAll('.view-tab').forEach(b=>{const active=b.dataset.view===view;b.classList.toggle('view-tab--active',active);b.setAttribute('aria-pressed',String(active))});if(!prayer&&!mantraAudio.paused){mantraAudio.pause();mantraAudio.currentTime=0;setMantraState(false)}window.scrollTo({top:0,behavior:'smooth'})}
 document.querySelectorAll('.view-tab').forEach(b=>b.onclick=()=>switchView(b.dataset.view));
 mantraToggle.onclick=async()=>{if(mantraAudio.paused){try{await mantraAudio.play();setMantraState(true)}catch(e){mantraToggle.textContent='Toca de nuevo para reproducir'}}else{mantraAudio.pause();mantraAudio.currentTime=0;setMantraState(false)}};
@@ -89,6 +89,6 @@ mantraAudio.onended=()=>setMantraState(false);
 
   })();
   </script>
-  <script src="app.js?v=10"></script>
+  <script src="app.js?v=11"></script>
 </body>
 </html>
