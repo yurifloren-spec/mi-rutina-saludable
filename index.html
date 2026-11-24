@@ -20,6 +20,12 @@
     <div class="progress-row"><div class="progress"><span id="progressBar"></span></div><strong id="progressText">0/0</strong></div>
   </header>
 
+  <nav class="view-tabs" aria-label="Secciones de la aplicación">
+    <button class="view-tab view-tab--active" type="button" data-view="day" aria-selected="true">HOY</button>
+    <button class="view-tab" type="button" data-view="prayer" aria-selected="false">REZO</button>
+  </nav>
+
+  <section id="dayView" class="view-panel view-panel--active">
   <nav id="dayNav" class="days" aria-label="Días de la semana"></nav>
 
   <main>
@@ -33,7 +39,20 @@
       <div id="menuRoot"></div>
     </section>
     <div id="taskGroups"></div>
-    <section class="prayer" aria-labelledby="prayerTitle">
+    <button id="editBtn" class="edit">Editar tareas de este día</button>
+  </main>
+  </section>
+
+  <section id="prayerView" class="view-panel prayer-screen" hidden>
+    <main class="prayer-main">
+      <section class="mantra-card" aria-labelledby="mantraTitle">
+        <span class="mantra-label">MANTRA EN BUCLE</span>
+        <h2 id="mantraTitle">Om Mani Padme Hum</h2>
+        <p>Una recitación calmada que se repetirá mientras permanezcas en esta pestaña.</p>
+        <button id="mantraToggle" class="mantra-toggle" type="button" aria-pressed="false">▶ Reproducir mantra</button>
+        <audio id="mantraAudio" src="mantra-om-mani-padme-hum.mp3" loop preload="auto"></audio>
+      </section>
+      <section class="prayer" aria-labelledby="prayerTitle">
       <h2 id="prayerTitle">REZO</h2>
       <div class="prayer-line"><strong>SUM TEMPLUM INTER NŪBĒS</strong><span>Soy un templo entre las nubes.</span></div>
       <div class="prayer-line"><strong>SUM CONSCIENTIA ET FIRMITAS</strong><span>Soy conciencia y firmeza.</span></div>
@@ -47,8 +66,8 @@
       <div class="prayer-line"><strong>HIC ET NUNC ADSUM</strong><span>Aquí y ahora estoy presente.</span></div>
       <div class="prayer-line prayer-line--last"><strong>ET METAS MEAS ASSEQUAR</strong></div>
     </section>
-    <button id="editBtn" class="edit">Editar tareas de este día</button>
-  </main>
+    </main>
+  </section>
 
   <dialog id="editDialog">
     <form method="dialog">
